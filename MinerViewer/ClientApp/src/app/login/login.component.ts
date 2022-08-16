@@ -5,51 +5,29 @@ import { AuthService } from "./login.service";
 
 @Component({
   selector: 'login',
-  providers: [FormBuilder, AuthService],
-  template: `
-<form #form>
-    <fieldset>
-        <legend>Login</legend>
-        <div class="form-field">
-            <label>Email:</label>
-            <input name="email" formControlName="email">
-        </div>
-        <div class="form-field">
-            <label>Password:</label>
-            <input name="password" formControlName="password" 
-                   type="password">
-        </div>
-    </fieldset>
-    <div class="form-buttons">
-        <button class="button button-primary" 
-                (click)="login()">Login</button>
-    </div>
-</form>`})
+  providers: [],
+  templateUrl: './login.component.html',
+})
  
 
 
 export class LoginComponent {
-    public form:FormGroup;
-
-    constructor(private fb:FormBuilder, 
+public password:string = "mike";
+public email:string = "wazowski";
+    constructor( 
                  private authService: AuthService, 
-                 private router: Router) {
+                 ) {
 
-        this.form = this.fb.group({
-            email: ['',Validators.required],
-            password: ['',Validators.required]
-        });
     }
 
     login() {
-        const val = this.form.value;
-
-        if (val.email && val.password) {
-            this.authService.login(val.email, val.password)
+console.log( "вошли в логин. вот данные: " + this.email + this.password);
+        if (this.email && this.password) {
+            this.authService.login(this.email, this.password)
                 .subscribe(
                     () => {
                         console.log("User is logged in");
-                        this.router.navigateByUrl('/');
+                        //this.router.navigateByUrl('/');
                     }
                 );
         }

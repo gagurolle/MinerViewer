@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AuthFormComponent } from './auth-form/auth-form.component';
 import { LoginComponent } from './login/login.component';
+import { AuthService } from './login/login.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,6 @@ import { LoginComponent } from './login/login.component';
     CounterComponent,
     FetchDataComponent,
     AuthFormComponent,
-    LoginComponent,
     LoginComponent
   ],
   imports: [
@@ -34,7 +34,7 @@ import { LoginComponent } from './login/login.component';
       { path: 'auth', component: LoginComponent },
     ])
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

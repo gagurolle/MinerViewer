@@ -6,7 +6,7 @@ import * as moment from "moment";
 import { User } from "oidc-client";
 import { map } from "rxjs";
 
-@Injectable()
+@Injectable({ providedIn:  'root' })
 export class AuthService {
 
     constructor(private http: HttpClient) {
