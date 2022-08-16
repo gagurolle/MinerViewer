@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "MinerViewer"
+  "defaultProject": "MinerViewer",
+  "cli": {
+    "analytics": false
+  }
 }

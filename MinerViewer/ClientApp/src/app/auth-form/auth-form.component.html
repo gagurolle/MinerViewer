@@ -1,0 +1,12 @@
+
+
+    <div>
+        <label>Login:   </label> 
+        <input id="login" #loginInput (keyup)="OnKeyLogin(loginInput.value)">
+    <br>
+    <div>
+        <label>Password:</label> 
+        <input id="password" #passwordInput (keyup)="OnKeyPassword(passwordInput.value)">
+    <br>
+    <button class="btn btn-primary"(click)="Submit()">Purchase</button>
+     
