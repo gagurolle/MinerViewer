@@ -12,8 +12,8 @@ import { AuthService } from "./login.service";
 
 
 export class LoginComponent {
-public password:string = "mike";
-public email:string = "wazowski";
+public password:string = "Mick";
+public email:string = "MickPassword";
     constructor( 
                  private authService: AuthService, 
                  ) {
