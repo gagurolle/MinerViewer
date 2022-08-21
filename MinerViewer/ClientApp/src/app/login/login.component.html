@@ -1,17 +1,22 @@
 
- 
-    Login
-      <div class="form-field">
-          <label>Email:</label>
-          <input id="email" name="email">
-      </div>
-      <div class="form-field">
-          <label>Password:</label>
-          <input id="password" name="password" 
-                 type="password">
-      </div>
 
-  <div class="form-buttons">
-      <button class="button button-primary" 
-              (click)="login()">Login</button>
-  </div>
+
+<div  class="container">
+  <form *ngIf="!this.isLogged" #loginForm="ngForm" (ngSubmit)="login()">
+    <h2 class="form-signin-heading">Login</h2>
+      <br/>
+      <label for="username" class="sr-only">Email address</label>
+      <input type="email" id="username" name="username" [(ngModel)]="username" 
+        class="form-control" placeholder="User Name" required>
+      <br/>
+      <label for="password" class="sr-only">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="password" 
+        class="form-control" placeholder="Password" required>
+      <br/>
+      <button class="btn btn-lg btn-primary" type="submit" [disabled]="!loginForm.valid">Log in</button>
+  </form>
+</div>
+
+<div *ngIf="this.isLogged">
+  <button class="btn btn-lg btn-primary" (click)="logout()">Log out</button>
+</div>

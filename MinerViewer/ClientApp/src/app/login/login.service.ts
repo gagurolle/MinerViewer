@@ -14,16 +14,25 @@ export class AuthService {
 
         
 
-    login(email:string, password:string ) {
-        return this.http.post<User>('https://localhost:7116/connect/token', JSON.stringify({client_id: 'company-employee', 
-        client_secret: 'codemazesecret', grant_type: 'password', username: email, password: password}), 
+    login(username:string, password:string ) {
+
+        let body = new URLSearchParams();
+        body.set('client_id', 'company-employee');
+        body.set('client_secret', 'codemazesecret');
+        body.set('grant_type', 'password');
+        body.set('username',  username);
+        body.set('password', password);
+
+
+        return this.http.post<User>('https://localhost:7116/connect/token', body.toString(), 
         {headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')}).pipe(map((res) => this.setSession(res)));}
         
           
     private setSession(authResult: any) {
-        const expiresAt = moment().add(authResult.expiresIn,'second');
-
-        localStorage.setItem('id_token', authResult.idToken);
+        console.log(authResult);
+        const expiresAt = moment().add(authResult.expires_in,'second');
+console.log(authResult.access_token);
+        localStorage.setItem('id_token', authResult.access_token);
         localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
     }          
 
