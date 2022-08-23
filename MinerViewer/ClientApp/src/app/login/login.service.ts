@@ -51,6 +51,9 @@ console.log(authResult.access_token);
 
     getExpiration() {
         let expiration = localStorage.getItem("expires_at") || "";
+        if(expiration == ""){
+            return '';
+        }
         const expiresAt = JSON.parse(expiration);
         return moment(expiresAt);
     }    
