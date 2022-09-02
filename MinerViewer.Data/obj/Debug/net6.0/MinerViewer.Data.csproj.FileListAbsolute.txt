@@ -1,0 +1,12 @@
+C:\Projects\MinerViewer\MinerViewer.Data\bin\Debug\net6.0\MinerViewer.Data.deps.json
+C:\Projects\MinerViewer\MinerViewer.Data\bin\Debug\net6.0\MinerViewer.Data.dll
+C:\Projects\MinerViewer\MinerViewer.Data\bin\Debug\net6.0\MinerViewer.Data.pdb
+C:\Projects\MinerViewer\MinerViewer.Data\obj\Debug\net6.0\MinerViewer.Data.csproj.AssemblyReference.cache
+C:\Projects\MinerViewer\MinerViewer.Data\obj\Debug\net6.0\MinerViewer.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\MinerViewer\MinerViewer.Data\obj\Debug\net6.0\MinerViewer.Data.AssemblyInfoInputs.cache
+C:\Projects\MinerViewer\MinerViewer.Data\obj\Debug\net6.0\MinerViewer.Data.AssemblyInfo.cs
+C:\Projects\MinerViewer\MinerViewer.Data\obj\Debug\net6.0\MinerViewer.Data.csproj.CoreCompileInputs.cache
+C:\Projects\MinerViewer\MinerViewer.Data\obj\Debug\net6.0\MinerViewer.Data.dll
+C:\Projects\MinerViewer\MinerViewer.Data\obj\Debug\net6.0\refint\MinerViewer.Data.dll
+C:\Projects\MinerViewer\MinerViewer.Data\obj\Debug\net6.0\MinerViewer.Data.pdb
+C:\Projects\MinerViewer\MinerViewer.Data\obj\Debug\net6.0\ref\MinerViewer.Data.dll

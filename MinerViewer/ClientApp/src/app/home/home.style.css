@@ -1,0 +1,37 @@
+mat-grid-tile {
+   
+  }
+  
+
+  .example-card {
+
+    border: 2px solid #7922CC;
+    border-radius: 25px;
+    background-color: #EEDDFF;
+  }
+
+  .graphic-card-card {
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  
+  
+  /** Styles to make the demo look better. */
+  
+
+ 
+  
+  
+  
+
+
+  .card{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  }
+
+  .ext-panel{
+    height: 100;
+  }

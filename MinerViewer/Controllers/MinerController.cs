@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MinerViewer.Context;
 using MinerViewer.Data.Entities;
+using MinerViewer.HTTP;
+using Newtonsoft.Json;
 
 namespace MinerViewer.Controllers
 {
@@ -20,41 +22,102 @@ namespace MinerViewer.Controllers
             us = _us;
             _logger = logger;
         }
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [HttpGet("showMiners")]
+        public async Task<IEnumerable<MinerAdress>> ShowMiners()
+        {
+            var result = await us.MinerAdresses.ToListAsync();
+            return result;
+        }
+
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [HttpPost("addMiner")]
+        public async Task<OkResult> AddMiner(MinerAdress ma)
+        {
+
+            bool responseMessage = false;
+
+            try
+            {
+                string jsonResponse = await Http.GetRequestAsync($"http://{ma.Ip}/Miner/AddMiner");
+                responseMessage = JsonConvert.DeserializeObject<bool>(jsonResponse);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            if (responseMessage)
+            {
+                var t = us.MinerAdresses.Where(x => x.Id == ma.Id);
+
+                if (!us.MinerAdresses.Where(x => x.Id == ma.Id).Any())
+                {
+                    us.MinerAdresses.Add(new MinerAdress() { Id = ma.Id, Ip = ma.Ip});
+                    us.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("This miner already exist in db");
+                }
+                
+            }
+            return Ok();
+        }
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [HttpGet("miner")]
+        public async Task<Miner> GetMiner(int id)
+        {
+            Miner responseMessage = null!;
+            var miner = await us.MinerAdresses.Where(x => x.Id == id).FirstOrDefaultAsync();
+            if (miner != null)
+            {
+                try
+                {
+                    string jsonResponse = await Http.GetRequestAsync($"http://{miner.Ip}/Miner/GetInfo");
+                    responseMessage = JsonConvert.DeserializeObject<Miner>(jsonResponse);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+            return responseMessage;
+        }
+
 
         [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpGet("miners")]
-        public IEnumerable<Miner> Get()
+        public async Task<IEnumerable<Miner>> Get()
         {
-            return getMiners();
+
+
+            var aliveMiners = us.MinerAdresses.ToList();
+            var result = new List<Miner>();
+            foreach(var miner in aliveMiners)
+            {
+                try
+                {
+                    
+                    string jsonResponse = await Http.GetRequestAsync($"http://{miner.Ip}/Miner/GetInfo");
+                    var responseMessage = JsonConvert.DeserializeObject<Miner>(jsonResponse);
+                    result.Add(responseMessage);
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    continue;
+                }
+            }
+           
+            return result;
         }
 
-        public List<Miner> getMiners()
-        {
-            return new List<Miner>() { 
-                new Miner() { 
-                Id = 1,
-                Location = "Moscow",
-                Name = "RIG-1",
-                Coin = "ETH",
-                Ip = "192.168.1.31",
-                Os = "Windows",
-                Cards = new List<GraphicCard>() { 
-                    new GraphicCard() { Name = "RTX3070", MemoryTemp = new Random().Next(50, 100) }, 
-                    new GraphicCard() { Name = "RTX3090", MemoryTemp = new Random().Next(50, 100) } 
-                } 
-            }, new Miner() {
-                Id = 1,
-                Location = "Moscow",
-                Name = "RIG-2",
-                Coin = "ETH",
-                Ip = "192.168.1.154",
-                Os = "Debian",
-                Cards = new List<GraphicCard>() {
-                    new GraphicCard() { Name = "RTX3060", MemoryTemp = new Random().Next(50, 100) },
-                    new GraphicCard() { Name = "RTX3060", MemoryTemp = new Random().Next(50, 100) } 
-                }
-
-            } };
+        
         }
     }
-}

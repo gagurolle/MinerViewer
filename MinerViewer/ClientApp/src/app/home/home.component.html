@@ -1,4 +1,46 @@
-<h1>Информация по доступным майнерам</h1>
-<b>Доступные майнеры: </b>
-<br>
-<div>Температура в Москве:</div>
+<h1>Miner information:</h1>
+
+<mat-grid-list [cols]="3">
+
+
+  <div *ngFor="let item of data">
+    <mat-grid-tile>
+      <mat-card class="example-card">
+        
+        <mat-card-content>
+          <mat-grid-list [cols]="2">
+            <mat-grid-tile> <h6>{{item.name}}</h6></mat-grid-tile>
+            <mat-grid-tile><mat-card-actions align="end">
+              <button mat-stroked-button color="primary"
+              (click)="Reload(item.id)">reload</button>
+            </mat-card-actions></mat-grid-tile>
+          </mat-grid-list>
+         
+          <div>os: {{item.os}}</div>
+          <div>coin: {{item.coin}}</div>
+          <div>location: {{item.location}}</div>
+          <div>ip: {{item.ip}}</div>
+          <div>cards:
+            <div class="card" *ngFor="let card of item.cards">
+              <mat-expansion-panel class="ext-panel">
+              <mat-expansion-panel-header>
+                <mat-panel-title h>
+                  {{card.name}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{card.memoryTemp}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <li>memoryTemp:{{card.memoryTemp}}</li>
+              <li>hotSpotTemp:{{card.hotSpotTemp}}</li>
+                <li>cooler:{{card.cooler}}</li>
+            </mat-expansion-panel>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </div>
+
+
+</mat-grid-list>

@@ -1,0 +1,26 @@
+<mat-table class="mat-elevation-z8">
+ <!-- Position Column -->
+    <ng-container matColumnDef="Id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Id}} </mat-cell>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="Ip adress">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Ip </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let element"> {{element.Ip}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+<div>
+    <label>Id:   </label> 
+    <input id="id" #idInput (keyup)="OnKeyId(idInput.value)">
+<br>
+<div>
+    <label>Ip:</label> 
+    <input id="ip" #ipInput (keyup)="OnKeyIp(ipInput.value)">
+<br>
+<button class="btn btn-primary"(click)="Submit()">Add</button>
+ 

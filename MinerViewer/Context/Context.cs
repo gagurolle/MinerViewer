@@ -6,10 +6,11 @@ namespace MinerViewer.Context
   
     public class DatabaseContext : DbContext
     {
-        public DbSet<Blog> Blog { get; set; }
-        public DbSet<Miner> Miners { get; set; }
+       // public DbSet<Miner> Miners { get; set; }
 
         public DbSet<GraphicCard> GraphicCards { get; set; }
+
+        public DbSet<MinerAdress> MinerAdresses { get; set; }
 
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
@@ -19,10 +20,4 @@ namespace MinerViewer.Context
         }
     }
 
-    public class Blog
-    {
-        public int BlogId { get; set; }
-        public string Url { get; set; }
-
-    }
 }

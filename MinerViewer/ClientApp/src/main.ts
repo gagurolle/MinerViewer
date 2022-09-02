@@ -23,12 +23,7 @@ const providers = [
   { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] },
   { provide: 'AUTH_URL', useFactory: getAuthUrl, deps: [] },
   { provide: 'URL', useFactory: getUrl, deps: [] },
-  {
-    provide: HTTP_INTERCEPTORS, 
-    useClass: AuthInterceptor, 
-    multi: true,
-    deps: []
-  }
+  
 ];
 
 if (environment.production) {
