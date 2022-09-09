@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthFormComponent } from './auth-form.component';
+import { AddMinerTableComponent } from './add-miner-table.component';
 
-describe('AuthFormComponent', () => {
-  let component: AuthFormComponent;
-  let fixture: ComponentFixture<AuthFormComponent>;
+describe('AddMinerTableComponent', () => {
+  let component: AddMinerTableComponent;
+  let fixture: ComponentFixture<AddMinerTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthFormComponent ]
+      declarations: [ AddMinerTableComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AuthFormComponent);
+    fixture = TestBed.createComponent(AddMinerTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

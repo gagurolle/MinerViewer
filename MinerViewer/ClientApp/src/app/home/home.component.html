@@ -1,46 +1,52 @@
-<h1>Miner information:</h1>
+<h1 class="font">Miner information:</h1>
+<mat-grid-list [cols]="3" rowHeight="475:460">
+  <mat-grid-tile *ngFor="let item of data">
+    <div class="card">
+      <mat-grid-list [cols]="2" rowHeight="4:1">
+        <mat-grid-tile>
+          <h6>{{item.name}}</h6>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button (click)="Reload(item.id)">
+            <img
+              src='https://cdn-icons-png.flaticon.com/512/998/998571.png?w=740&t=st=1662637131~exp=1662637731~hmac=5e4f004cb35fc85c0a33d0a62b7538362f16227c47e31d5a2f1afa9768a76f60'
+              width="15" height="15" alt='image'>
+          </button>   
+          <button (click)="Open(item.id)">
+            <img
+              src='https://cdn-icons-png.flaticon.com/512/2459/2459322.png'
+              width="15" height="15" alt='image'>
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div>id: {{item.id}}</div>
+      <div>os: {{item.os}}</div>
+      <div>coin: {{item.coin}}</div>
+      <div>location: {{item.location}}</div>
+      <div>ip: {{item.ip}}</div>
+      <div>cards:
 
-<mat-grid-list [cols]="3">
-
-
-  <div *ngFor="let item of data">
-    <mat-grid-tile>
-      <mat-card class="example-card">
-        
-        <mat-card-content>
-          <mat-grid-list [cols]="2">
-            <mat-grid-tile> <h6>{{item.name}}</h6></mat-grid-tile>
-            <mat-grid-tile><mat-card-actions align="end">
-              <button mat-stroked-button color="primary"
-              (click)="Reload(item.id)">reload</button>
-            </mat-card-actions></mat-grid-tile>
-          </mat-grid-list>
-         
-          <div>os: {{item.os}}</div>
-          <div>coin: {{item.coin}}</div>
-          <div>location: {{item.location}}</div>
-          <div>ip: {{item.ip}}</div>
-          <div>cards:
-            <div class="card" *ngFor="let card of item.cards">
-              <mat-expansion-panel class="ext-panel">
-              <mat-expansion-panel-header>
-                <mat-panel-title h>
-                  {{card.name}}
-                </mat-panel-title>
-                <mat-panel-description>
-                  {{card.memoryTemp}}
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <li>memoryTemp:{{card.memoryTemp}}</li>
-              <li>hotSpotTemp:{{card.hotSpotTemp}}</li>
-                <li>cooler:{{card.cooler}}</li>
-            </mat-expansion-panel>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </div>
-
-
+        <div class="tablediv">
+          <table class="table table-bordered" fixed-header>
+            <thead>
+              <tr class="table-head" fixed-header>
+                <th class="table-head-font-weight-normal">Name</th>
+                <th class="table-head-font-weight-normal">memoryTemp</th>
+                <th class="table-head-font-weight-normal">hotSpotTemp</th>
+                <th class="table-head-font-weight-normal">cooler</th>
+              </tr>
+            </thead>
+            <tbody class="table-txt-blue">
+              <tr *ngFor='let card of item.cards'>
+                <th>{{card.name}}</th>
+                <th>{{card.memoryTemp}}</th>
+                <th>{{card.hotSpotTemp}}</th>
+                <th>{{card.cooler}}</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
 </mat-grid-list>

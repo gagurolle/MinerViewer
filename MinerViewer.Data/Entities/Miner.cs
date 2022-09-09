@@ -13,7 +13,7 @@ namespace MinerViewer.Data.Entities
         public string? Os { get; set; }
         public string? Coin { get; set; }
         public string? Location { get; set; }
-        public List<GraphicCard>? Cards { get; set; }
+        public List<GraphicCard> Cards { get; set; }
         public string? Ip { get; set; }
     }
 }

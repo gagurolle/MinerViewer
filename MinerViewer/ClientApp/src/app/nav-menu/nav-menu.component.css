@@ -2,13 +2,24 @@ a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+
+
 }
 
 html {
   font-size: 14px;
+
+}
+  
+
+
+header {
+  background-color: rgb(160, 106, 204);
+
 }
 @media (min-width: 768px) {
   html {
+
     font-size: 16px;
   }
 }

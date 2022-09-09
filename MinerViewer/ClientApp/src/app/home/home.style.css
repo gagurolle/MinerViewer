@@ -1,37 +1,49 @@
-mat-grid-tile {
-   
-  }
-  
 
-  .example-card {
-
-    border: 2px solid #7922CC;
-    border-radius: 25px;
-    background-color: #EEDDFF;
-  }
-
-  .graphic-card-card {
+  table {
+    font-family: arial, sans-serif;
     font-size: 10px;
-    line-height: 1.5;
+    width: 99%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #e39a9a;
   }
 
-  
-  
-  /** Styles to make the demo look better. */
-  
+  .tablediv {
+    padding:1px;
+  }
 
- 
-  
-  
-  
+  tbody {
+      display:block;
+      height:150px;
+      overflow:scroll;
+  }
+  thead, tbody tr {
+      display:table;
+      width:100%;
+      table-layout:fixed;/* even columns width , fix width of table too*/
+  }
 
-
+  thead {
+    width: calc( 100% - 1.67em )
+  }
   .card{
   padding-top: 10px;
+  padding-right: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
+  width: 95%;
+  height: 95%;
+
   }
 
-  .ext-panel{
-    height: 100;
+  h1 {
+    color: rgb(230, 229, 221);
   }
+

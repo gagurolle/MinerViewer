@@ -18,5 +18,9 @@ export class addMinerService {
   public getShowMiners():Observable<MinerAdress[]>{
     return this.http.get<MinerAdress[]>(this.baseUrl + 'api/showMiners')
   }
+
+  public deleteMiner(miner:MinerAdress):Observable<object>{
+    return this.http.get<object>(this.baseUrl + `api/deleteMiner?ip=${miner.ip}&id=${miner.id}`)
+  }
 }
 

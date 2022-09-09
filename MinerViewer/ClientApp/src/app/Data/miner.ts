@@ -4,7 +4,7 @@ export interface Miner {
     os?: string;
     coin?: string;
     location?: string;
-    cards?: GraphicCard[];
+    cards: GraphicCard[];
     ip?: string;
 }
 
@@ -17,6 +17,6 @@ export interface GraphicCard {
 }
 
 export interface MinerAdress {
-    Id:number;
-    Ip:string;
+    id:number;
+    ip:string;
 }

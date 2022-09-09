@@ -100,21 +100,29 @@ namespace SingleMiner.Controllers
 
         private Miner getMiners()
         {
-            return 
-                new Miner() {
-                Id = 1,
-                Location = "Moscow",
-                Name = "RIG-1",
-                Coin = "ETH",
-                Ip = "192.168.1.31",
-                Os = "Windows",
-                Cards = new List<GraphicCard>() {
-                    new GraphicCard() { Name = "RTX3070", MemoryTemp = new Random().Next(50, 100) },
-                    new GraphicCard() { Name = "RTX3090", MemoryTemp = new Random().Next(50, 100) }
-                }
-            
 
-             };
+            int i = 0;
+            int rand = new Random().Next(0, 10);
+
+            List<GraphicCard> cards = new List<GraphicCard>();
+
+            for(i = 0;i < rand; i++)
+            {
+                cards.Add(new GraphicCard { Name = "RTX3070", MemoryTemp = new Random().Next(50, 100) });
+            }
+
+            return
+                new Miner() {
+                    Id = 8,
+                    Location = "Moscow",
+                    Name = "RIG-" + new Random().Next(0,230),
+                    Coin = "ETH",
+                    Ip = "192.168.1.31",
+                    Os = "Windows",
+                    Cards = cards
+
+
+                };
         }
     }
 }

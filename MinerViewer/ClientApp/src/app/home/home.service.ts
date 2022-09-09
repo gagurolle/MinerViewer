@@ -14,5 +14,9 @@ export class HomeService {
    public getMiner():Observable<Miner[]>{
     return this.http.get<Miner[]>(this.baseUrl + 'api/miners');
   }
+
+  public reloadMiner(id:number):Observable<Miner>{
+    return this.http.get<Miner>(this.baseUrl + `api/miner?id=${id}`);
+  }
 }
 

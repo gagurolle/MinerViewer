@@ -68,6 +68,26 @@ namespace MinerViewer.Controllers
         }
 
         [Authorize(AuthenticationSchemes = "Bearer")]
+        [HttpGet("DeleteMiner")]
+        public async Task<OkResult> DeleteMiner(int id, string ip)
+        {
+
+            var t = us.MinerAdresses.Where(x => x.Id == id && x.Ip == ip).FirstOrDefault(); ;
+
+                if (t != null)
+                {
+                    us.MinerAdresses.Remove(t);
+                    us.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("Cant delete");
+                }
+
+            return Ok();
+        }
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpGet("miner")]
         public async Task<Miner> GetMiner(int id)
         {
@@ -114,10 +134,8 @@ namespace MinerViewer.Controllers
                     continue;
                 }
             }
-           
-            return result;
+            return result.OrderBy(x => x.Id);
         }
-
         
         }
     }
